@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
-import CardContainer from './Containers/CardContainer'
+import Main from './Containers/Main'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <CardContainer />
+      <Main />
     </div>
   );
 }

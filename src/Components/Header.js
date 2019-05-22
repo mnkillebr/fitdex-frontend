@@ -23,21 +23,14 @@ export default class Header extends Component {
   state = {
     // anchorEl: null,
     // mobileMoreAnchorEl: null,
-    searchText: '',
     open: false
-  }
-
-  searchChange = (event) => {
-    this.setState({
-      searchText: event.target.value
-    })
   }
 
   menuToggle = (event) => {
     this.setState({
       open: !this.state.open
     })
-    console.log(event.target)
+    // console.log(event.target)
   }
 
   render() {
@@ -48,14 +41,14 @@ export default class Header extends Component {
         minHeight: 80,
         // backgroundColor: 'blue'
       },
-      Search: {
+      Filter: {
         display: 'flex',
         position: 'relative',
         left: '30px',
         backgroundColor: '#349fda',
         borderRadius: '7px'
       },
-      searchInput: {
+      filterInput: {
         position: 'relative',
         left: '10px',
         color: 'white'
@@ -96,11 +89,11 @@ export default class Header extends Component {
             <Typography color="inherit" variant="h5">
               Welcome to FitDECKS
             </Typography>
-            <div style={styles.Search}>
+            <div style={styles.Filter}>
               <div>
                 <SearchIcon style={styles.searchIcon} />
               </div>
-              <InputBase onChange={this.searchChange} style={styles.searchInput} placeholder="Search..." value={this.state.searchText} />
+              <InputBase onChange={this.props.filterChange} style={styles.filterInput} placeholder="Filter..." value={this.props.filter} />
             </div>
           </Toolbar>
         </AppBar>

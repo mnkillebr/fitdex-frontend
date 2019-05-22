@@ -1,6 +1,6 @@
 const initialState = {
   exercises: [],
-  
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
       return {...state, exercises: action.payload}
     case 'ADD_EXERCISE':
       return {...state,
-        exercises: [...state.exercises, action.payload]
+        exercises: [action.payload, ...state.exercises]
       }
     case 'DELETE_EXERCISE':
       return {...state,

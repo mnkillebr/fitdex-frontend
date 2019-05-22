@@ -38,8 +38,10 @@ class AddExercise extends Component {
   }
 
   handleSubmit = (event) => {
-    console.log(this.state)
-    this.props.addingExercise(this.state)
+    let muscleString = this.state.muscles.join(', ')
+    let exObj = {...this.state, muscles: muscleString}
+    // console.log(exObj)
+    this.props.addingExercise(exObj)
   }
 
   render() {

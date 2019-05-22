@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Header from '../Components/Header'
 import { connect } from 'react-redux'
 import * as actionCreators from '../Redux/actions/action'
 import Fab from '@material-ui/core/Fab';
@@ -38,10 +37,14 @@ class CardContainer extends Component {
     // {console.log(this.props.exercises.map(ex=>ex.description))}
     return (
       <div>
-        <Header />
+
         <div className="card-container">
+          <Typography variant="h5" component="h2">Exercises</Typography>
           <div className="h-scroll wrapper">
-            {this.props.exercises.map(exercise=>
+            {this.props.exercises.filter(exercise=>
+              exercise.name.toLowerCase().includes(this.props.filterText) ||
+              exercise.difficulty.toLowerCase().includes(this.props.filterText)
+            ).map(exercise=>
             <Card className="card">
               <CardActionArea onClick={this.cardFlip} >
                 <CardMedia
@@ -54,7 +57,7 @@ class CardContainer extends Component {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">{exercise.name}</Typography>
-                  <Typography component="p">{exercise.description}</Typography>
+                  <Typography component="p">{exercise.difficulty}</Typography>
                 </CardContent>
               </CardActionArea>
             </Card>)}
