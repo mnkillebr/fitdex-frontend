@@ -90,8 +90,8 @@ export default class Header extends Component {
       <div>
         <AppBar color="primary" position="static">
           <Toolbar style={styles.Toolbar} >
-            <IconButton color="inherit">
-              <MenuIcon onClick={this.menuToggle} />
+            <IconButton onClick={this.menuToggle} color="inherit">
+              <MenuIcon />
             </IconButton>
             <Typography color="inherit" variant="h5">
               Welcome to FitDECKS
