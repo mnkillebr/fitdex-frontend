@@ -1,6 +1,6 @@
 const initialState = {
   exercises: [],
-
+  workout_cards: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,6 +15,8 @@ const reducer = (state = initialState, action) => {
       return {...state,
         exercises: [...state.exercises]
       }
+    case 'GET_WORKOUTS':
+      return {...state, workout_cards: action.payload}
     default:
       return state
   }

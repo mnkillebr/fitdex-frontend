@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import * as actionCreators from '../Redux/actions/action'
+import { connect } from 'react-redux';
+import * as actionCreators from '../Redux/actions/action';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import AddExercise from './AddExercise'
+import AddExercise from '../Components/AddExercise'
 
 class CardContainer extends Component {
 
@@ -37,7 +37,6 @@ class CardContainer extends Component {
     // {console.log(this.props.exercises.map(ex=>ex.description))}
     return (
       <div>
-
         <div className="card-container">
           <Typography variant="h5" component="h2">Exercises</Typography>
           <div className="h-scroll wrapper">

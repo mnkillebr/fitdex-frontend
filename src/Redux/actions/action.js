@@ -10,12 +10,21 @@
 export const getExercises = (exercises) => ({type: 'GET_EXERCISES', payload: exercises})
 export const addNewExercise = (exercise) => ({type: 'ADD_EXERCISE', payload: exercise})
 export const deleteExercise = (exercise) => ({type: 'DELETE_EXERCISE', payload: exercise})
+export const getWorkouts = (workouts) => ({type: 'GET_WORKOUTS', payload: workouts})
 
 export function fetchedExercises() {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/exercises')
     .then(res=>res.json())
     .then(exerciseArr=>dispatch(getExercises(exerciseArr)))
+  }
+}
+
+export function fetchedWorkoutCards() {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/workout_cards')
+    .then(res=>res.json())
+    .then(workoutCardArr=>dispatch(getWorkouts(workoutCardArr)))
   }
 }
 
