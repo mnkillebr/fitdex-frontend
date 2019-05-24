@@ -50,7 +50,7 @@ class CardContainer extends Component {
                   component="img"
                   alt={exercise.name}
                   className="card-media"
-                  height="140"
+                  height="200"
                   image={exercise.media}
                   title={exercise.name}
                 />

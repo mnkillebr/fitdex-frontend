@@ -26,6 +26,11 @@ class DeckContainer extends Component {
     this.props.fetchedWorkoutCards()
   }
 
+  shouldComponentUpdate() {
+    // this.props.fetchedWorkoutCards()
+    return true
+  }
+
   viewWorkout = (event) => {
     let workout = this.props.workout_cards.find(workout=>workout.id==event.target.id)
     this.setState({
@@ -57,7 +62,7 @@ class DeckContainer extends Component {
                   component="img"
                   alt={workout_card.name}
                   className="card-media"
-                  height="140"
+                  height="200"
                   image={workout_card.img}
                   title={workout_card.name}
                 />
@@ -72,7 +77,7 @@ class DeckContainer extends Component {
               <AddIcon />
             </Fab>
           {this.state.viewWorkoutStatus?<WorkoutView workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} />:null}
-          {this.state.viewNewForm?<AddWorkout viewStatus={this.state.viewNewForm} toggleForm={this.toggleNewWorkoutForm} />:null}
+          {this.state.viewNewForm?<AddWorkout viewStatus={this.state.viewNewForm} />:null}
         </div>
       </div>
     )

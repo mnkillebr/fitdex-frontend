@@ -26,12 +26,26 @@ import * as actionCreators from '../Redux/actions/action'
 class WorkoutView extends Component {
 
   state = {
-    // info: false,
-    selectedExercises: null
+    timer: this.props.workoutDetails.time,
+    selectedExercise: null
   }
 
   startWorkout = (event) => {
-    console.log(event.target.innerText)
+    console.log(this.props.workoutDetails.exercises)
+    let time = this.state.timer
+    const goTimer = setInterval(()=>{
+      let timeLeft = this.state.timer
+      timeLeft -= 1;
+      this.setState({
+        timer: timeLeft
+      })
+      if(timeLeft <= 0){
+        clearInterval(goTimer)
+        this.setState({
+          timer: 'Done'
+        })
+      }
+    }, 1000)
   }
 
   showDetails = (event) => {
@@ -42,22 +56,15 @@ class WorkoutView extends Component {
 
   render() {
 
-    let timeLeft = 30;
-    const goTimer = setInterval(()=>{
-      // DOM
-      timeLeft -= 1;
-      if(timeLeft <= 0){
-        clearInterval(goTimer)
-        // DOM
-      }
-    }, 1000)
-
     const styles = {
       root: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden'
+      },
+      header: {
+        display: 'inline-block'
       },
       gridList: {
         width: 500,
@@ -78,7 +85,8 @@ class WorkoutView extends Component {
           disableEscapeKeyDown
           open={this.props.viewStatus}
           onClose={this.props.viewWorkout}>
-          <DialogTitle>{this.props.workoutDetails.name}</DialogTitle>
+          <DialogTitle style={styles.header}>{this.props.workoutDetails.name}</DialogTitle>
+          <DialogContent style={styles.header}><DialogContentText variant="h4" className="timer">{`Time Remaining: ${this.state.timer}`}</DialogContentText></DialogContent>
             <div style={styles.root}>
               <GridList cellHeight={180} style={styles.gridList}>
                 {this.props.workoutDetails.exercises.map(tile => (

@@ -22,7 +22,8 @@ class AddExercise extends Component {
     difficulty: '',
     media: '',
     description: '',
-    muscles: []
+    muscles: [],
+    form: this.props.formStatus
   }
 
   handleSelectChange = (event, attribute) => {
@@ -42,6 +43,9 @@ class AddExercise extends Component {
     let exObj = {...this.state, muscles: muscleString}
     // console.log(exObj)
     this.props.addingExercise(exObj)
+    this.setState({
+      form: !this.state.form
+    })
   }
 
   render() {
@@ -75,7 +79,7 @@ class AddExercise extends Component {
         <Dialog
           disableBackdropClick
           disableEscapeKeyDown
-          open={this.props.formStatus}
+          open={this.state.form}
           onClose={this.props.toggleForm}>
           <DialogTitle>Add New Exercise</DialogTitle>
           <DialogContent>

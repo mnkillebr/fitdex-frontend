@@ -9,6 +9,7 @@
 
 export const getExercises = (exercises) => ({type: 'GET_EXERCISES', payload: exercises})
 export const addNewExercise = (exercise) => ({type: 'ADD_EXERCISE', payload: exercise})
+export const addNewWorkout = (workout) => ({type: 'ADD_WORKOUT', payload: workout})
 export const deleteExercise = (exercise) => ({type: 'DELETE_EXERCISE', payload: exercise})
 export const getWorkouts = (workouts) => ({type: 'GET_WORKOUTS', payload: workouts})
 
@@ -39,6 +40,20 @@ export function addingExercise(newExerciseObj) {
       body: JSON.stringify(newExerciseObj)
     }).then(res=>res.json())
     .then(newExercise=>dispatch(addNewExercise(newExercise)))
+      }
+    }
+
+export function addingWorkout(newWorkoutObj) {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/api/v1/workout_cards', {
+      method: 'POST',
+      headers: {
+  		'Content-Type': 'application/json',
+  		'Accept': 'application/json'
+  	  },
+      body: JSON.stringify(newWorkoutObj)
+    }).then(res=>res.json())
+    .then(newWorkout=>dispatch(addNewWorkout(newWorkout)))
       }
     }
 

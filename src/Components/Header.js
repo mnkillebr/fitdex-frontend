@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Route, withRouter, Switch } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import Home from '@material-ui/icons/Home';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import InsertChart from '@material-ui/icons/InsertChart';
 import Store from '@material-ui/icons/Store';
@@ -65,9 +67,11 @@ export default class Header extends Component {
     const sideList = (
       <div style={styles.list}>
         <List>
-          {['Profile', 'History', 'Stats', 'Store'].map(text => (
+          {['Home', 'Profile', 'History', 'Stats', 'Store'].map(text => (
             <ListItem button key={text}>
-              <ListItemIcon>{text==='Profile'?<AccountCircle />:
+              <ListItemIcon>{
+                text==='Home'?<Home />:
+                text==='Profile'?<AccountCircle />:
                 text==='History'?<History />:
                 text==='Stats'?<InsertChart />:
                 text==='Store'?<Store />:<InsertChart />}

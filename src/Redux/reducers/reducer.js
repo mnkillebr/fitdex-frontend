@@ -11,6 +11,10 @@ const reducer = (state = initialState, action) => {
       return {...state,
         exercises: [action.payload, ...state.exercises]
       }
+    case 'ADD_WORKOUT':
+      return {...state,
+        workout_cards: [action.payload, ...state.workout_cards]
+      }
     case 'DELETE_EXERCISE':
       return {...state,
         exercises: [...state.exercises]
