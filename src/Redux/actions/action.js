@@ -9,9 +9,10 @@
 
 export const getExercises = (exercises) => ({type: 'GET_EXERCISES', payload: exercises})
 export const addNewExercise = (exercise) => ({type: 'ADD_EXERCISE', payload: exercise})
-export const addNewWorkout = (workout) => ({type: 'ADD_WORKOUT', payload: workout})
+export const addNewWorkoutCard = (workoutCard) => ({type: 'ADD_WORKOUT', payload: workoutCard})
+export const deleteWorkoutCard = (workoutCardId) => ({type: 'DELETE_WORKOUT_CARD', payload: workoutCardId})
 export const deleteExercise = (exercise) => ({type: 'DELETE_EXERCISE', payload: exercise})
-export const getWorkouts = (workouts) => ({type: 'GET_WORKOUTS', payload: workouts})
+export const getWorkoutCards = (workoutCards) => ({type: 'GET_WORKOUTS', payload: workoutCards})
 
 export function fetchedExercises() {
   return (dispatch) => {
@@ -25,7 +26,7 @@ export function fetchedWorkoutCards() {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/workout_cards')
     .then(res=>res.json())
-    .then(workoutCardArr=>dispatch(getWorkouts(workoutCardArr)))
+    .then(workoutCardArr=>dispatch(getWorkoutCards(workoutCardArr)))
   }
 }
 
@@ -43,7 +44,7 @@ export function addingExercise(newExerciseObj) {
       }
     }
 
-export function addingWorkout(newWorkoutObj) {
+export function addingWorkoutCard(newWorkoutObj) {
   return (dispatch) => {
     return fetch('http://localhost:3000/api/v1/workout_cards', {
       method: 'POST',
@@ -53,19 +54,34 @@ export function addingWorkout(newWorkoutObj) {
   	  },
       body: JSON.stringify(newWorkoutObj)
     }).then(res=>res.json())
-    .then(newWorkout=>dispatch(addNewWorkout(newWorkout)))
+    .then(newWorkout=>dispatch(addNewWorkoutCard(newWorkout)))
       }
     }
 
-// export function deletingExercise(exObj) {
-//   return (dispatch) => {
-//     return fetch(`http://localhost:3000/api/v1/exercises/${exObj.id}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Accept': 'application/json'
-//       }
-//     })
-//     .then(response => response.json())
-//   }
-// }
+export function deletingWorkoutCard(workoutId) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/api/v1/workout_cards/${workoutId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    // .then(json=>dispatch(deleteWorkout(json)))
+  }
+}
+
+
+export function deletingExercise(exObj) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/api/v1/exercises/${exObj.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+  }
+}

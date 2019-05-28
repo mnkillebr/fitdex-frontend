@@ -17,6 +17,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
+import Delete from '@material-ui/icons/Delete';
 import InfoIcon from '@material-ui/icons/Info';
 import Popover from '@material-ui/core/Popover';
 import Timer from './Timer'
@@ -30,9 +31,21 @@ class WorkoutView extends Component {
     selectedExercise: null
   }
 
+  handleDelete = (event) => {
+    this.props.toggleView()
+    let workoutCardId = this.props.workoutDetails.id
+    let exerciseIds = this.props.workoutDetails.exercises.map(ex=>ex.id)
+    
+  }
+
   startWorkout = (event) => {
-    console.log(this.props.workoutDetails.exercises)
-    let time = this.state.timer
+    this.workoutTimer()
+    this.setState({
+      timer: this.props.workoutDetails.time
+    })
+  }
+
+  workoutTimer = () => {
     const goTimer = setInterval(()=>{
       let timeLeft = this.state.timer
       timeLeft -= 1;
@@ -48,11 +61,17 @@ class WorkoutView extends Component {
     }, 1000)
   }
 
-  showDetails = (event) => {
+  nextWorkout = (exercise) => {
     this.setState({
-      info: !this.state.info
+      selectedExercise: exercise
     })
   }
+
+  // showDetails = (event) => {
+  //   this.setState({
+  //     info: !this.state.info
+  //   })
+  // }
 
   render() {
 
@@ -73,9 +92,9 @@ class WorkoutView extends Component {
       icon: {
         color: 'rgba(255, 255, 255, 0.54)'
       },
-      selected: {
-        border: '5px solid green'
-      }
+      // selected: {
+      //   border: '5px solid green'
+      // }
     }
 
     return(
@@ -85,12 +104,15 @@ class WorkoutView extends Component {
           disableEscapeKeyDown
           open={this.props.viewStatus}
           onClose={this.props.viewWorkout}>
-          <DialogTitle style={styles.header}>{this.props.workoutDetails.name}</DialogTitle>
+          <div>
+            <DialogTitle style={styles.header}>{this.props.workoutDetails.name}</DialogTitle>
+            <IconButton style={styles.header} onClick={this.handleDelete}><Delete></Delete></IconButton>
+          </div>
           <DialogContent style={styles.header}><DialogContentText variant="h4" className="timer">{`Time Remaining: ${this.state.timer}`}</DialogContentText></DialogContent>
             <div style={styles.root}>
               <GridList cellHeight={180} style={styles.gridList}>
                 {this.props.workoutDetails.exercises.map(tile => (
-                  <GridListTile key={tile.media} style={styles.selected} >
+                  <GridListTile key={tile.media} >
                     <img src={tile.media} alt={tile.name} />
                     <GridListTileBar
                       title={tile.name}
@@ -104,8 +126,11 @@ class WorkoutView extends Component {
             <Button onClick={this.props.viewWorkout} color="primary">
               Back
             </Button>
-            <Button className="start" onClick={this.startWorkout} color="primary">
+            <Button onClick={this.startWorkout} color="primary">
               Start
+            </Button>
+            <Button onClick={this.completeWorkout} color="primary">
+              Complete
             </Button>
           </DialogActions>
         </Dialog>
@@ -114,4 +139,8 @@ class WorkoutView extends Component {
   }
 }
 
-export default WorkoutView
+const stateToProps = (state) => {
+  return state
+}
+
+export default connect(stateToProps, actionCreators)(WorkoutView)

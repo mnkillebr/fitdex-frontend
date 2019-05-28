@@ -1,6 +1,7 @@
 const initialState = {
   exercises: [],
-  workout_cards: []
+  workout_cards: [],
+  workout_ids: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,9 +16,13 @@ const reducer = (state = initialState, action) => {
       return {...state,
         workout_cards: [action.payload, ...state.workout_cards]
       }
+    case 'DELETE_WORKOUT_CARD':
+      return {...state,
+        workout_cards: [...state.workout_cards.filter(card=>card.id!==action.payload)]
+      }
     case 'DELETE_EXERCISE':
       return {...state,
-        exercises: [...state.exercises]
+        exercises: [...state.exercises.filter(exercise=>exercise.id!==action.payload)]
       }
     case 'GET_WORKOUTS':
       return {...state, workout_cards: action.payload}

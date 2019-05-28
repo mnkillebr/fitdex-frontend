@@ -46,7 +46,7 @@ class AddWorkout extends Component {
 
   handleSubmit = (event, workoutObj) => {
     let exerciseIds = workoutObj.exercises.map(exercise=>exercise.id)
-    this.props.addingWorkout(workoutObj)
+    this.props.addingWorkoutCard(workoutObj)
     .then(res=>{
       let createdWorkoutId = res.payload.id
       exerciseIds.forEach(id=>{

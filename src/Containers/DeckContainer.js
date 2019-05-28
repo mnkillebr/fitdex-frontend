@@ -31,12 +31,18 @@ class DeckContainer extends Component {
     return true
   }
 
+  toggleView = () => {
+    this.setState({
+      viewWorkoutStatus: !this.state.viewWorkoutStatus
+    })
+  }
+
   viewWorkout = (event) => {
     let workout = this.props.workout_cards.find(workout=>workout.id==event.target.id)
     this.setState({
-      currentWorkout: workout,
-      viewWorkoutStatus: !this.state.viewWorkoutStatus
+      currentWorkout: workout
     })
+    this.toggleView()
   }
 
   toggleNewWorkoutForm = (event) => {
@@ -76,7 +82,7 @@ class DeckContainer extends Component {
             <Fab color="primary" aria-label="Add" className="add-exercise" onClick={this.toggleNewWorkoutForm} >
               <AddIcon />
             </Fab>
-          {this.state.viewWorkoutStatus?<WorkoutView workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} />:null}
+          {this.state.viewWorkoutStatus?<WorkoutView workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} toggleView={this.toggleView} />:null}
           {this.state.viewNewForm?<AddWorkout viewStatus={this.state.viewNewForm} />:null}
         </div>
       </div>
