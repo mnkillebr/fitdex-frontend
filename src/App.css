@@ -23,6 +23,27 @@
   color: #61dafb;
 }
 
+#filter, #filter2 {
+    -webkit-transition: width 1s ease;
+    -moz-transition: width 1s ease;
+    -o-transition: width 1s ease;
+    transition: width 1s ease;
+
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    background: yellow;
+    vertical-align: middle;
+    line-height: 30px;
+    height: 30px;
+
+    width: 0px;
+}
+
+#filter.in, #filter2.in {
+  width: 200px;
+}
+
 /* .card-container > .wrapper {
   grid-column: 1 / -1;
 } */
@@ -71,6 +92,10 @@
 
 .card:hover {
   transform: scale(1.05)
+}
+
+.card-container {
+  position: relative;
 }
 
 /* .card.is-flipped {

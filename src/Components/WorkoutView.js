@@ -11,8 +11,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
-// import InfoIcon from '@material-ui/icons/Info';
-// import Popover from '@material-ui/core/Popover';
+import Tooltip from '@material-ui/core/Tooltip';
 import Timer from './Timer'
 import { connect } from 'react-redux'
 import * as actionCreators from '../Redux/actions/action'
@@ -99,7 +98,7 @@ class WorkoutView extends Component {
           onClose={this.props.viewWorkout}>
           <div>
             <DialogTitle style={styles.header}>{this.props.workoutDetails.name}</DialogTitle>
-            <IconButton style={styles.header} onClick={this.handleDelete}><Delete></Delete></IconButton>
+            <Tooltip title="Delete"><IconButton style={styles.header} onClick={this.handleDelete}><Delete></Delete></IconButton></Tooltip>
           </div>
           <DialogContent style={styles.header}><DialogContentText variant="h4" className="timer">{`Time Remaining: ${this.state.timer}`}</DialogContentText></DialogContent>
             <div style={styles.root}>

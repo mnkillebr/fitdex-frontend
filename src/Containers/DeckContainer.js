@@ -4,22 +4,24 @@ import * as actionCreators from '../Redux/actions/action';
 import WorkoutView from '../Components/WorkoutView'
 import AddWorkout from '../Components/AddWorkout'
 import Fab from '@material-ui/core/Fab';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class DeckContainer extends Component {
 
   state = {
     viewWorkoutStatus: false,
     viewNewForm: false,
-    currentWorkout: {}
+    currentWorkout: {},
+    filter: ''
   }
 
   componentDidMount() {
@@ -29,6 +31,16 @@ class DeckContainer extends Component {
   shouldComponentUpdate() {
     // this.props.fetchedWorkoutCards()
     return true
+  }
+
+  toggleFilter = (event) => {
+    document.querySelector('#filter').classList.toggle('in')
+  }
+
+  filterChange = (event) => {
+    this.setState({
+      filter: event.target.value
+    })
   }
 
   toggleView = () => {
@@ -52,15 +64,41 @@ class DeckContainer extends Component {
   }
 
   render() {
-    console.log(this.props.newWorkout)
+    const styles = {
+      Filter: {
+        display: 'inline-block',
+        position: 'relative',
+        backgroundColor: '#349fda',
+        borderRadius: '7px'
+      },
+      filterInput: {
+        position: 'relative',
+        bottom: '3px',
+        left: '10px',
+        color: 'white'
+      },
+      searchIcon: {
+        color: 'white',
+        position: 'relative',
+        top: '3px'
+      }
+    }
     return (
       <div>
         <div className="card-container">
-          <Typography variant="h5" component="h2">Workouts</Typography>
+          <Button onClick={this.toggleFilter} variant="contained" color="primary">
+            <Typography className="container-title" variant="h4" component="h2" color="inherit" >Workouts</Typography>
+          </Button>
+          <div id="filter" className="" style={styles.Filter}>
+            <div>
+              <SearchIcon style={styles.searchIcon} />
+              <InputBase onChange={this.filterChange} style={styles.filterInput} placeholder="Filter..." value={this.state.filter} />
+            </div>
+          </div>
           <div className="h-scroll wrapper">
             {this.props.workout_cards.filter(workout_card=>
-              workout_card.name.toLowerCase().includes(this.props.filterText) ||
-              workout_card.level.toLowerCase().includes(this.props.filterText)
+              workout_card.name.toLowerCase().includes(this.state.filter) ||
+              workout_card.level.toLowerCase().includes(this.state.filter)
             ).map(workout_card=>
             <Card className="card">
               <CardActionArea onClick={this.viewWorkout}>
@@ -80,9 +118,11 @@ class DeckContainer extends Component {
               </CardActionArea>
             </Card>)}
           </div>
+          <Tooltip title="Add Workout">
             <Fab color="primary" aria-label="Add" className="add-exercise" onClick={this.toggleNewWorkoutForm} >
               <AddIcon />
             </Fab>
+          </Tooltip>
           {this.state.viewWorkoutStatus?<WorkoutView workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} toggleView={this.toggleView} />:null}
           {this.state.viewNewForm?<AddWorkout viewStatus={this.state.viewNewForm} />:null}
         </div>

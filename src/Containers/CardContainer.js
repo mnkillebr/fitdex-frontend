@@ -3,18 +3,33 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../Redux/actions/action';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import ExCard from '../Components/ExCard'
+import ExCard from '../Components/ExCard';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-import AddExercise from '../Components/AddExercise'
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import AddExercise from '../Components/AddExercise';
 
 class CardContainer extends Component {
 
   state = {
     form_add: false,
+    filter: ''
   }
 
   componentDidMount() {
     this.props.fetchedExercises()
+  }
+
+  toggleFilter = (event) => {
+    document.querySelector('#filter2').classList.toggle('in')
+  }
+
+  filterChange = (event) => {
+    this.setState({
+      filter: event.target.value
+    })
   }
 
   toggleNewExerciseForm = (event) => {
@@ -24,22 +39,50 @@ class CardContainer extends Component {
   }
 
   render() {
-    // {console.log(this.props.exercises.map(ex=>ex.description))}
+    const styles = {
+      Filter: {
+        display: 'inline-block',
+        position: 'relative',
+        backgroundColor: '#349fda',
+        borderRadius: '7px'
+      },
+      filterInput: {
+        position: 'relative',
+        bottom: '3px',
+        left: '10px',
+        color: 'white'
+      },
+      searchIcon: {
+        color: 'white',
+        position: 'relative',
+        top: '3px'
+      }
+    }
     return (
       <div>
         <div className="card-container">
-          <Typography variant="h5" component="h2">Exercises</Typography>
+          <Button onClick={this.toggleFilter} variant="contained" color="primary">
+            <Typography className="container-title" variant="h4" component="h2" color="inherit">Exercises</Typography>
+          </Button>
+          <div id="filter2" className="" style={styles.Filter}>
+            <div>
+              <SearchIcon style={styles.searchIcon} />
+              <InputBase onChange={this.filterChange} style={styles.filterInput} placeholder="Filter..." value={this.state.filter} />
+            </div>
+          </div>
           <div className="h-scroll wrapper">
             {this.props.exercises.filter(exercise=>
-              exercise.name.toLowerCase().includes(this.props.filterText) ||
-              exercise.difficulty.toLowerCase().includes(this.props.filterText)
+              exercise.name.toLowerCase().includes(this.state.filter) ||
+              exercise.difficulty.toLowerCase().includes(this.state.filter)
             ).map(exercise=>
               <ExCard exercise={exercise} />
             )}
           </div>
-          <Fab color="primary" aria-label="Add" className="add-exercise" onClick={this.toggleNewExerciseForm} >
-            <AddIcon />
-          </Fab>
+          <Tooltip title="Add Exercise">
+            <Fab color="primary" aria-label="Add" className="add-exercise" onClick={this.toggleNewExerciseForm} >
+              <AddIcon />
+            </Fab>
+          </Tooltip>
           {this.state.form_add?<AddExercise toggleForm={this.toggleNewExerciseForm} formStatus={this.state.form_add} />:null}
         </div>
       </div>
