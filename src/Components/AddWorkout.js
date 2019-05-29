@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
@@ -50,17 +50,7 @@ class AddWorkout extends Component {
     .then(res=>{
       let createdWorkoutId = res.payload.id
       exerciseIds.forEach(id=>{
-        return fetch('http://localhost:3000/api/v1/workouts', {
-          method: 'POST',
-          headers: {
-      		'Content-Type': 'application/json',
-      		'Accept': 'application/json'
-      	  },
-          body: JSON.stringify({
-            exercise_id: id,
-            workout_card_id: createdWorkoutId
-          })
-        }).then(res=>res.json())
+        this.props.addingWorkoutJoin(id, createdWorkoutId)
       })
     })
     this.setState({

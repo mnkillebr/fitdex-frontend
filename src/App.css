@@ -73,9 +73,9 @@
   transform: scale(1.05)
 }
 
-.card.is-flipped {
+/* .card.is-flipped {
   transform: rotateY(180deg) scale(1.2);
-}
+} */
 
 .add-exercise {
   z-index: 1;

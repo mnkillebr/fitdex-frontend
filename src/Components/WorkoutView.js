@@ -4,22 +4,15 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
-import InfoIcon from '@material-ui/icons/Info';
-import Popover from '@material-ui/core/Popover';
+// import InfoIcon from '@material-ui/icons/Info';
+// import Popover from '@material-ui/core/Popover';
 import Timer from './Timer'
 import { connect } from 'react-redux'
 import * as actionCreators from '../Redux/actions/action'
@@ -35,7 +28,7 @@ class WorkoutView extends Component {
     this.props.toggleView()
     let workoutCardId = this.props.workoutDetails.id
     let exerciseIds = this.props.workoutDetails.exercises.map(ex=>ex.id)
-    
+    this.props.deletingWorkoutCard(exerciseIds, workoutCardId)
   }
 
   startWorkout = (event) => {

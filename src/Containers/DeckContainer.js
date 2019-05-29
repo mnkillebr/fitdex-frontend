@@ -52,6 +52,7 @@ class DeckContainer extends Component {
   }
 
   render() {
+    console.log(this.props.newWorkout)
     return (
       <div>
         <div className="card-container">
