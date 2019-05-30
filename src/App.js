@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import Header from './Components/Header';
 import Main from './Containers/Main';
@@ -8,21 +8,38 @@ import History from './Containers/History';
 import Store from './Containers/Store';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
+class App extends Component {
+
+  state = {
+    user: {}
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/api/v1/users/')
+    .then(res=>res.json())
+    .then(users=>{
+      this.setState({
+        user: users[0]
+      })
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
       <main>
         <Switch>
-          <Route path="/profile" component={Profile} />
-          <Route path="/history" component={History} />
-          <Route path="/stats" component={Stats} />
-          <Route path="/store" component={Store} />
+          <Route path="/profile" render={(routerProps)=><Profile currentUser={this.state.user} />} />
+          <Route path="/history" render={(routerProps)=><History currentUser={this.state.user} />} />
+          <Route path="/stats" render={(routerProps)=><Stats currentUser={this.state.user} />} />
+          <Route path="/store" render={(routerProps)=><Store currentUser={this.state.user} />} />
           <Route path="/" component={Main} />
         </Switch>
       </main>
-    </div>
-  );
+      </div>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App);

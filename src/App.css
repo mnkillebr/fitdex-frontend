@@ -44,6 +44,17 @@
   width: 200px;
 }
 
+.macro_img, .weight_img {
+  width: 100%;
+}
+
+.ppr_img:hover {
+  transform: scale(1.5)
+}
+
+.ppr_img {
+  transition: transform .5s;
+}
 /* .card-container > .wrapper {
   grid-column: 1 / -1;
 } */
