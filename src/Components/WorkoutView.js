@@ -20,6 +20,7 @@ class WorkoutView extends Component {
 
   state = {
     timer: this.props.workoutDetails.time,
+    exercises: this.props.workoutDetails.exercises,
     selectedExercise: null
   }
 
@@ -31,6 +32,9 @@ class WorkoutView extends Component {
   }
 
   startWorkout = (event) => {
+    this.setState({
+      selectedExercise: this
+    })
     this.workoutTimer()
     this.setState({
       timer: this.props.workoutDetails.time
@@ -84,9 +88,9 @@ class WorkoutView extends Component {
       icon: {
         color: 'rgba(255, 255, 255, 0.54)'
       },
-      // selected: {
-      //   border: '5px solid green'
-      // }
+      selected: {
+        border: '5px solid green'
+      }
     }
 
     return(

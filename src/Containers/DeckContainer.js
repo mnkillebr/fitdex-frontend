@@ -21,6 +21,7 @@ class DeckContainer extends Component {
     viewWorkoutStatus: false,
     viewNewForm: false,
     currentWorkout: {},
+    newWorkout: {},
     filter: ''
   }
 
@@ -64,6 +65,7 @@ class DeckContainer extends Component {
   }
 
   render() {
+    console.log(this.props)
     const styles = {
       Filter: {
         display: 'inline-block',
@@ -124,7 +126,7 @@ class DeckContainer extends Component {
             </Fab>
           </Tooltip>
           {this.state.viewWorkoutStatus?<WorkoutView workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} toggleView={this.toggleView} />:null}
-          {this.state.viewNewForm?<AddWorkout viewStatus={this.state.viewNewForm} />:null}
+          {this.state.viewNewForm?<AddWorkout newWorkout={this.state.newWorkout} viewStatus={this.state.viewNewForm} />:null}
         </div>
       </div>
     )

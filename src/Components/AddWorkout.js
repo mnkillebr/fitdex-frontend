@@ -23,7 +23,8 @@ class AddWorkout extends Component {
     img: '',
     time: 0,
     exercises: [],
-    form: this.props.viewStatus
+    form: this.props.viewStatus,
+    workout: this.props.newWorkout
   }
 
   toggleForm = (event) => {
@@ -54,7 +55,8 @@ class AddWorkout extends Component {
       })
     })
     this.setState({
-      form: !this.state.form
+      form: !this.state.form,
+      workout: workoutObj
     })
   }
 
