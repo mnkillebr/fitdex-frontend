@@ -14,7 +14,8 @@ Backend API utilizes PostgresSQL 11, which can be downloaded [here](https://www.
 `bundle` backend and make sure to run backend on `localhost:3000`
 `npm install` or `yarn` frontend and start app with `npm start` or `yarn start`
 
-### License
+### Author
+Marcus Killebrew [killebrew.biz@gmail.com](mailto:killebrew.biz@gmail.com)
 
 
 
