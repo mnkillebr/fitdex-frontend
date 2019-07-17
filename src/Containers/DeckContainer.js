@@ -37,9 +37,9 @@ class DeckContainer extends Component {
     this.props.fetchedWorkoutCards()
   }
 
-  // componentDidUpdate() {
-  //   this.props.fetchedWorkoutCards()
-  // }
+  componentDidUpdate() {
+    this.props.fetchedWorkoutCards()
+  }
 
   toggleFilter = (event) => {
     document.querySelector('#filter').classList.toggle('in')
