@@ -59,6 +59,30 @@
   grid-column: 1 / -1;
 } */
 
+.upload_btn {
+  position: relative;
+  top: 18px;
+}
+
+.upload {
+  display: none
+}
+
+.profile {
+  width: 50%;
+  position: relative;
+  left: 50px;
+}
+
+.prof_stat {
+  display: inline-block;
+}
+
+.form-input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .h-scroll {
   display: grid;
   grid-gap: calc(30px / 2);

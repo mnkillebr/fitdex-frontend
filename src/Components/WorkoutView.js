@@ -21,7 +21,7 @@ class WorkoutView extends Component {
   state = {
     timer: this.props.workoutDetails.time,
     exercises: this.props.workoutDetails.exercises,
-    selectedExercise: null
+    selectedExercise: null,
   }
 
   handleDelete = (event) => {
@@ -64,7 +64,7 @@ class WorkoutView extends Component {
       start: new Date(new Date().setDate(new Date().getDate() - 5)),
       end: new Date(new Date().setDate(new Date().getDate() - 5))
     }
-    console.log(eventObj)
+    // console.log(eventObj)
     // fetch('http://localhost:3000/api/v1/events', {
     //   method: 'POST',
     //   headers: {
@@ -74,6 +74,7 @@ class WorkoutView extends Component {
     //   body: JSON.stringify(eventObj)
     // }).then(res => res.json())
     this.props.toggleView()
+    this.props.handleSnackbar()
   }
 
   nextWorkout = (exercise) => {

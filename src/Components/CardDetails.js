@@ -19,6 +19,7 @@ class CardDetails extends Component {
   }
 
   render() {
+    // console.log(this.props.exercise.description.split(/(\d+)/))
     return (
       <div>
         <Dialog

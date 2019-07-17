@@ -37,9 +37,9 @@ class DeckContainer extends Component {
     this.props.fetchedWorkoutCards()
   }
 
-  componentDidUpdate() {
-    this.props.fetchedWorkoutCards()
-  }
+  // componentDidUpdate() {
+  //   this.props.fetchedWorkoutCards()
+  // }
 
   toggleFilter = (event) => {
     document.querySelector('#filter').classList.toggle('in')
@@ -132,7 +132,7 @@ class DeckContainer extends Component {
               <AddIcon />
             </Fab>
           </Tooltip>
-          {this.state.viewWorkoutStatus?<WorkoutView workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} toggleView={this.toggleView} />:null}
+          {this.state.viewWorkoutStatus?<WorkoutView handleSnackbar={this.props.handleSnackbar} workoutDetails={this.state.currentWorkout} viewStatus={this.state.viewWorkoutStatus} viewWorkout={this.viewWorkout} toggleView={this.toggleView} />:null}
           {this.state.viewNewForm?<AddWorkout newWorkout={this.state.newWorkout} viewStatus={this.state.viewNewForm} />:null}
         </div>
       </div>

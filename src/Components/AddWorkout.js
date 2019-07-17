@@ -27,6 +27,14 @@ class AddWorkout extends Component {
     workout: this.props.newWorkout
   }
 
+  // fileInput = React.createRef();
+
+  // handleUpload = (event) => {
+  //   this.setState({
+  //     img: this.fileInput.current.files[0].name
+  //   })
+  // }
+
   toggleForm = (event) => {
     this.setState({
       form: !this.state.form
@@ -85,6 +93,19 @@ class AddWorkout extends Component {
             <form style={styles.root}>
               <div>
                 <TextField onChange={this.handleTextChange} value={this.state.name} style={styles.formControl} autoFocus margin="dense" id="name" label="Name" type="text"/>
+                {/* <input
+                  ref={this.fileInput}
+                  onChange={this.handleUpload}
+                  accept="image/*"
+                  className='upload'
+                  id="contained-button-file"
+                  type="file"
+                />
+                <label htmlFor="contained-button-file">
+                  <Button variant="contained" component="span" className='upload_btn'>
+                    Upload Image
+                  </Button>
+                </label> */}
                 <TextField onChange={this.handleTextChange} value={this.state.img} style={styles.formControl} margin="dense" id="img" label="Picture or Gif Link" type="text"/>
               </div>
               <Divider variant="middle"/>
