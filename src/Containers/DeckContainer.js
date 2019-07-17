@@ -22,16 +22,23 @@ class DeckContainer extends Component {
     viewNewForm: false,
     currentWorkout: {},
     newWorkout: {},
-    filter: ''
+    filter: '',
+    workout_cards: []
   }
 
   componentDidMount() {
+    // fetch('http://localhost:3000/api/v1/workout_cards')
+    //   .then(res => res.json())
+    //   .then(workCardArr=>
+    //     this.setState({
+    //       workout_cards: workCardArr
+    //     })
+    //     )
     this.props.fetchedWorkoutCards()
   }
 
-  shouldComponentUpdate() {
-    // this.props.fetchedWorkoutCards()
-    return true
+  componentDidUpdate() {
+    this.props.fetchedWorkoutCards()
   }
 
   toggleFilter = (event) => {

@@ -57,6 +57,25 @@ class WorkoutView extends Component {
     }, 1000)
   }
 
+  completeWorkout = (event) => {
+    let eventObj = {
+      calendar_id: 1,
+      title: this.props.workoutDetails.name,
+      start: new Date(new Date().setDate(new Date().getDate() - 5)),
+      end: new Date(new Date().setDate(new Date().getDate() - 5))
+    }
+    console.log(eventObj)
+    // fetch('http://localhost:3000/api/v1/events', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json'
+    //   },
+    //   body: JSON.stringify(eventObj)
+    // }).then(res => res.json())
+    this.props.toggleView()
+  }
+
   nextWorkout = (exercise) => {
     this.setState({
       selectedExercise: exercise
