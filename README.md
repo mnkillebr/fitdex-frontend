@@ -6,3 +6,15 @@ This is the frontend for the project. Check out the backend [here](https://githu
 
 ### Demo
 [FitDecks](http://youtube.com)
+
+### Getting Started
+
+Clone both frontend and backend repos. 
+Backend API utilizes PostgresSQL 11, which can be downloaded [here](https://www.postgresql.org/)
+`bundle` backend and make sure to run backend on `localhost:3000`
+`npm install` or `yarn` frontend and start app with `npm start` or `yarn start`
+
+### License
+
+
+
