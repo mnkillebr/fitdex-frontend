@@ -5,7 +5,7 @@ FitDecks is fitness planner and tracker. Create your own workout "card" from pre
 This is the frontend for the project. Check out the backend [here](https://github.com/mnkillebr/fitdex-backend "FitDecks Backend").
 
 ### Demo
-[FitDecks](http://youtube.com)
+[FitDecks](https://youtu.be/U07CxUiSOww)
 
 ### Getting Started
 
