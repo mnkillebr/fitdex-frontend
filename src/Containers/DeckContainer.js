@@ -23,7 +23,7 @@ class DeckContainer extends Component {
     currentWorkout: {},
     newWorkout: {},
     filter: '',
-    workout_cards: []
+    // workout_cards: []
   }
 
   componentDidMount() {
