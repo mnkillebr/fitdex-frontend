@@ -16,12 +16,12 @@ Backend API utilizes PostgresSQL 11, which can be downloaded [here](https://www.
 
 ### Stack
 
--React
--Redux
--Material UI
--Chart.js
--React Big Calendar
--Ruby on Rails
+⋅⋅-React
+⋅⋅-Redux
+⋅⋅-Material UI
+⋅⋅-Chart.js
+⋅⋅-React Big Calendar
+⋅⋅-Ruby on Rails
 
 ### Author
 Marcus Killebrew [killebrew.biz@gmail.com](mailto:killebrew.biz@gmail.com)
