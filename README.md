@@ -14,6 +14,15 @@ Backend API utilizes PostgresSQL 11, which can be downloaded [here](https://www.
 `bundle` backend and make sure to run backend on `localhost:3000`
 `npm install` or `yarn` frontend and start app with `npm start` or `yarn start`
 
+### Stack
+
+* React
+* Redux
+* Material UI
+* Chart.js
+* React Big Calendar
+* Ruby on Rails
+
 ### Author
 Marcus Killebrew [killebrew.biz@gmail.com](mailto:killebrew.biz@gmail.com)
 
