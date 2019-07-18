@@ -16,7 +16,7 @@ Backend API utilizes PostgresSQL 11, which can be downloaded [here](https://www.
 
 ### Stack
 
-⋅⋅*React
+⋅⋅* React
 ⋅⋅-Redux
 ⋅⋅-Material UI
 ⋅⋅-Chart.js
