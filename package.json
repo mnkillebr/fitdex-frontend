@@ -8,7 +8,7 @@
     "axios": "^0.19.0",
     "chart.js": "^2.8.0",
     "fetch-action-creator": "^2.0.4",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "lodash.template": "^4.5.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
