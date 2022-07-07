@@ -10,7 +10,7 @@
     "fetch-action-creator": "^2.0.4",
     "lodash": "^4.17.14",
     "lodash.template": "^4.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.8.6",
     "react-big-calendar": "^0.22.0",
     "react-dom": "^16.8.6",
